@@ -90,6 +90,8 @@ normalButton.addEventListener('click', button => {
     normalButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
     document.getElementById('simplecalc').style.display = "grid"
     scientificButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
+    sciCalculator.clear()
+    sciCalculator.updateDisplay()
 })
 
 scientificButton.addEventListener('click', button => {
@@ -97,4 +99,6 @@ scientificButton.addEventListener('click', button => {
     scientificButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
     document.getElementById('scicalc').style.display = "grid"
     normalButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
+    calculator.clear()
+    calculator.updateDisplay()
 })
