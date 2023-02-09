@@ -8,6 +8,8 @@ const deleteButton = document.querySelector('[data-delete]')
 const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
+const normalButton = document.querySelector('[data-normal]')
+const scientificButton = document.querySelector('[data-scientific]')
 
 const calculator = new SimpleCalculator(previousOperandTextElement, currentOperandTextElement)
 
@@ -38,4 +40,14 @@ allClearButton.addEventListener('click', button => {
 deleteButton.addEventListener('click', button => {
     calculator.delete()
     calculator.updateDisplay()
+})
+
+normalButton.addEventListener('click', button => {
+    document.getElementById('scicalc').style.display = "none";
+    document.getElementById('simplecalc').style.display = "grid"
+})
+
+scientificButton.addEventListener('click', button => {
+    document.getElementById('simplecalc').style.display = "none";
+    document.getElementById('scicalc').style.display = "grid"
 })

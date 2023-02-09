@@ -131,6 +131,9 @@ body {
     border-top-right-radius: 10px;
 }
 
+.hidden {
+    display: none;
+}
 
 @font-face {
     font-family: 'GothicRounded';
