@@ -161,8 +161,12 @@ body {
 }
 
 /* TODO: Fix this awkward scaling */
-.initial-offset {
+.calc-offset {
     margin-left: 400px;
+}
+
+.explainer-offset {
+    margin-left: 200px;
 }
 
 @font-face {
