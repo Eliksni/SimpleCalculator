@@ -82,23 +82,33 @@ sciDeleteButton.addEventListener('click', button => {
 })
 
 // Selector buttons intialization
+// TODO: PLEASE replace the repeated document calls with to simple/sci with two variables
 const normalButton = document.querySelector('[data-normal]')
 const scientificButton = document.querySelector('[data-scientific]')
 
 normalButton.addEventListener('click', button => {
+
     document.getElementById('scicalc').style.display = "none"
     normalButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
     document.getElementById('simplecalc').style.display = "grid"
     scientificButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
+
+    if(!document.getElementById('simplecalc').classList.contains('fade-out-left'))
+        document.getElementById('simplecalc').classList.add('fade-out-left')
+    else
+        document.getElementById('simplecalc').classList.toggle('fade-out-left')
+    
     sciCalculator.clear()
     sciCalculator.updateDisplay()
 })
 
 scientificButton.addEventListener('click', button => {
+
     document.getElementById('simplecalc').style.display = "none"
     scientificButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
     document.getElementById('scicalc').style.display = "grid"
     normalButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
+
     calculator.clear()
     calculator.updateDisplay()
 })
