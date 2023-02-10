@@ -85,18 +85,23 @@ sciDeleteButton.addEventListener('click', button => {
 // TODO: PLEASE replace the repeated document calls with to simple/sci with two variables
 const normalButton = document.querySelector('[data-normal]')
 const scientificButton = document.querySelector('[data-scientific]')
+normalButton.clicked = true;
+scientificButton.clicked = false;
 
 normalButton.addEventListener('click', button => {
 
-    document.getElementById('scicalc').style.display = "none"
-    normalButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
-    document.getElementById('simplecalc').style.display = "grid"
-    scientificButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
-
-    if(!document.getElementById('simplecalc').classList.contains('fade-out-left'))
-        document.getElementById('simplecalc').classList.add('fade-out-left')
-    else
-        document.getElementById('simplecalc').classList.toggle('fade-out-left')
+    if(normalButton.clicked == false) {
+        //document.getElementById('scicalc').style.display = "none"
+        normalButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
+        normalButton.clicked = true
+        //document.getElementById('simplecalc').style.display = "grid"
+        scientificButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
+        scientificButton.clicked = false;
+        console.log(normalButton.clicked)
+        console.log(scientificButton.clicked)
+    
+    }
+    
     
     sciCalculator.clear()
     sciCalculator.updateDisplay()
@@ -104,10 +109,32 @@ normalButton.addEventListener('click', button => {
 
 scientificButton.addEventListener('click', button => {
 
-    document.getElementById('simplecalc').style.display = "none"
-    scientificButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
+    if(scientificButton.clicked == false) {
+        scientificButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
+        scientificButton.clicked = true
+        normalButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
+        normalButton.clicked = false;
+        console.log(normalButton.clicked)
+        console.log(scientificButton.clicked)
+        
+    }
+
+    if(!document.getElementById('simplecalc').classList.contains('fade-out-left'))
+            document.getElementById('simplecalc').classList.add('fade-out-left')
+    else
+        document.getElementById('simplecalc').classList.toggle('fade-out-left')
+
+    setTimeout( () => {
+        //document.getElementById('simplecalc').style.display = "none"
+        
+        console.log("delayed!")
+    }, 1000)
+
     document.getElementById('scicalc').style.display = "grid"
-    normalButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
+    if(!document.getElementById('scicalc').classList.contains('fade-in-right')) 
+        document.getElementById('scicalc').classList.add('fade-in-right')
+    else
+         document.getElementById('scicalc').classList.toggle('fade-in-right') 
 
     calculator.clear()
     calculator.updateDisplay()

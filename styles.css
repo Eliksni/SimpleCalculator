@@ -15,9 +15,10 @@ body {
     display: grid;
     justify-content: center;
     align-content: center;
-    min-height: 60vh; 
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .calculator-grid > button{
@@ -70,6 +71,8 @@ body {
     border-radius: 10px;
     grid-template-columns: repeat(2, 200px);
     grid-template-rows: repeat(1, 200px);
+    grid-column: 1;
+    grid-row: 2;
 }
 
 .explainer-grid > button{
@@ -114,6 +117,14 @@ body {
     justify-content: center;
 }
 
+.display-container-test {
+    display: grid;
+    grid-template-rows: 620px 200px;
+    height: 100vh;
+    justify-content: center;
+
+}
+
 .blround {
     border-bottom-left-radius: 10px;
 }
@@ -131,7 +142,8 @@ body {
 }
 
 .hidden {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .fade-out-left {
@@ -144,8 +156,13 @@ body {
 .fade-in-right {
     visibility: visible;
     opacity: 1;
-    transform: translateX(50%);
-    transition: transform 1s, visibility 0s 1s, opacity 1s linear;
+    transform: translateX(-50%);
+    transition: transform 1s, visibility 1s 0s, opacity 1s linear;
+}
+
+/* TODO: Fix this awkward scaling */
+.initial-offset {
+    margin-left: 400px;
 }
 
 @font-face {
