@@ -1,3 +1,36 @@
+@font-face {
+    font-family: 'GothicRounded';
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/GothamRounded.otf") format("opentype");
+}
+
+@keyframes slideOutLeft {
+    from {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
     font-family: 'GothicRounded', sans-serif;
@@ -146,32 +179,20 @@ body {
     opacity: 0;
 }
 
+/* 
 .fade-out-left {
     visibility: hidden;
     opacity: 0;
-    transform: translateX(-50%);
+    transform: translateX(-200%);
     transition: transform 1s, visibility 0s 1s, opacity 1s linear;
+} */
+
+.fade-out-left {
+    animation: slideOutLeft 1s;
+    animation-fill-mode: forwards;
 }
 
 .fade-in-right {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%);
-    transition: transform 1s, visibility 1s 0s, opacity 1s linear;
-}
-
-/* TODO: Fix this awkward scaling */
-.calc-offset {
-    margin-left: 400px;
-}
-
-.explainer-offset {
-    margin-left: 200px;
-}
-
-@font-face {
-    font-family: 'GothicRounded';
-    font-style: normal;
-    font-weight: normal;
-    src: url("fonts/GothamRounded.otf") format("opentype");
+    animation: slideInLeft 1s;
+    animation-fill-mode: forwards;
 }

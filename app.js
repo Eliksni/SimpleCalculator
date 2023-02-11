@@ -82,27 +82,41 @@ sciDeleteButton.addEventListener('click', button => {
 })
 
 // Selector buttons intialization
-// TODO: PLEASE replace the repeated document calls with to simple/sci with two variables
 const normalButton = document.querySelector('[data-normal]')
 const scientificButton = document.querySelector('[data-scientific]')
+const calculatorUI = document.getElementById('simplecalc')
+const sciCalculatorUI = document.getElementById('scicalc')
 normalButton.clicked = true;
 scientificButton.clicked = false;
+normalButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
 
 normalButton.addEventListener('click', button => {
 
     if(normalButton.clicked == false) {
-        //document.getElementById('scicalc').style.display = "none"
         normalButton.style.backgroundColor = "rgba(255, 255, 255, 0.75)"
         normalButton.clicked = true
-        //document.getElementById('simplecalc').style.display = "grid"
         scientificButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
         scientificButton.clicked = false;
-        console.log(normalButton.clicked)
-        console.log(scientificButton.clicked)
+
+        sciCalculatorUI.classList.remove('fade-in-right')
+        calculatorUI.classList.remove('fade-out-left')
+        
+        if(!sciCalculatorUI.classList.contains('fade-out-left'))
+            sciCalculatorUI.classList.add('fade-out-left')
+        else
+            sciCalculatorUI.classList.toggle('fade-out-left')
+
+        if(!calculatorUI.classList.contains('fade-in-right')) 
+            calculatorUI.classList.add('fade-in-right')
+        else {
+            calculatorUI.classList.toggle('fade-in-right')
+        }
+
+        // console.log("normbutton " + normalButton.clicked)
+        // console.log("scibutton " + scientificButton.clicked)
+        
     
     }
-    
-    
     sciCalculator.clear()
     sciCalculator.updateDisplay()
 })
@@ -114,28 +128,23 @@ scientificButton.addEventListener('click', button => {
         scientificButton.clicked = true
         normalButton.style.backgroundColor = "rgba(255, 255, 255, 0)"
         normalButton.clicked = false;
-        console.log(normalButton.clicked)
-        console.log(scientificButton.clicked)
-        
+
+        calculatorUI.classList.remove('fade-in-right')
+        sciCalculatorUI.classList.remove('fade-out-left')
+
+        if(!calculatorUI.classList.contains('fade-out-left'))
+            calculatorUI.classList.add('fade-out-left')
+        else
+            calculatorUI.classList.toggle('fade-out-left')
+
+        if(!sciCalculatorUI.classList.contains('fade-in-right')) 
+            sciCalculatorUI.classList.add('fade-in-right')
+        else
+            sciCalculatorUI.classList.toggle('fade-in-right')
+
+        console.log("normbutton " + normalButton.clicked)
+        console.log("scibutton " + scientificButton.clicked)
     }
-
-    if(!document.getElementById('simplecalc').classList.contains('fade-out-left'))
-            document.getElementById('simplecalc').classList.add('fade-out-left')
-    else
-        document.getElementById('simplecalc').classList.toggle('fade-out-left')
-
-    setTimeout( () => {
-        //document.getElementById('simplecalc').style.display = "none"
-        
-        console.log("delayed!")
-    }, 1000)
-
-    document.getElementById('scicalc').style.display = "grid"
-    if(!document.getElementById('scicalc').classList.contains('fade-in-right')) 
-        document.getElementById('scicalc').classList.add('fade-in-right')
-    else
-         document.getElementById('scicalc').classList.toggle('fade-in-right') 
-
     calculator.clear()
     calculator.updateDisplay()
 })
